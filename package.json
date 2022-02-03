@@ -4,17 +4,17 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"compile": "truffle compile --network testnet",
+		"deploy": "truffle migrate --network testnet",
+		"verify": "ruffle run verify JSFLOR_ICO@0xE8245128d6b53e675a0A66672C847D712620a239 --network testnet"
 	},
 	"keywords": [],
 	"author": "Juan Sebastian Flor <sebastian-flor@hotmail.com> (https://github.com/jsflor)",
 	"license": "ISC",
 	"dependencies": {
-		"@truffle/hdwallet-provider": "^2.0.2",
-		"dotenv": "^15.0.0",
-		"ganache-cli": "^6.12.2",
-		"jest": "^27.4.7",
-		"solc": "^0.8.11",
-		"web3": "^1.7.0"
+		"@truffle/hdwallet-provider": "2.0.0",
+		"dotenv": "^16.0.0",
+		"truffle": "^5.4.31",
+		"truffle-plugin-verify": "^0.5.21"
 	}
 }
