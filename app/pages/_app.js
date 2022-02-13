@@ -3,7 +3,7 @@ import { Web3ReactProvider, useWeb3React } from '@web3-react/core';
 import Web3 from 'web3';
 
 import Head from 'next/head'
-import Layout from '../components/layout'
+import Layout from '../components/Layout'
 import JSFLOR_ICO from '../../build/contracts/JSFLOR_ICO.json';
 import { JSFLOR_ICO_ADDRESS } from '../utils/constants';
 import '../index.scss'
