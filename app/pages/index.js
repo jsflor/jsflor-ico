@@ -56,11 +56,15 @@ function HomePage({ contract }) {
           >
             JSFLOR token ICO
           </h2>
-          <p style={{ lineHeight: "20px" }}>
-            Initial Coin Offering for JSFLOR token. A fully <Link target='_blank' href='https://ethereum.org/en/developers/docs/standards/tokens/erc-20/'>ERC20</Link> compliant token contract written in solidity and delopyed to Binance Smart Chain testnet for educational purposes.
+          <p style={{ lineHeight: "20px", marginBottom: "30px" }}>
+            Initial Coin Offering for JSFLOR token. A fully <Link target='_blank' href='https://ethereum.org/en/developers/docs/standards/tokens/erc-20/'>ERC20</Link> compliant token contract written in solidity and deployed to Binance Smart Chain testnet for educational purposes.
           </p>
+        </section>
+      </div>
+      <div className="bx--row">
+        <div className="bx--col-lg-6">
           {!!ico && Object.keys(ico).length > 0 && (
-            <div style={{ margin: '30px 0' }}>
+            <div>
               <StructuredListWrapper>
                 <StructuredListBody>
                   {/* TOKEN PRICE */}
@@ -107,6 +111,8 @@ function HomePage({ contract }) {
               </StructuredListWrapper>
             </div>
           )}
+        </div>
+        <div className="bx--col-lg-6">
           <Tabs>
             <Tab id="tab-1" label="Invest">
               <Invest contract={contract} />
@@ -115,7 +121,7 @@ function HomePage({ contract }) {
               <Balance contract={contract} />
             </Tab>
           </Tabs>
-        </section>
+        </div>
       </div>
     </div>
   );

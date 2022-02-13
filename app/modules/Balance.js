@@ -81,7 +81,7 @@ export default function Balance({ contract }) {
             />
           ) : (
             <Button type="submit" disabled={!contract || givenAccount.length !== 42}>
-              Check Balance
+                Check
             </Button>
           )}
         </div>
