@@ -1,8 +1,9 @@
 import React from 'react';
-import web3 from 'web3';
 import { useWeb3React } from '@web3-react/core';
 
 import { Form, NumberInput, Button, InlineLoading, InlineNotification, NotificationActionButton, Link } from 'carbon-components-react';
+
+import { toBN } from '../utils/utils';
 
 const NOTIFICATION_KINDS = {
   SUCCESS: 'success',
@@ -34,7 +35,7 @@ export default function Invest({ contract }) {
         console.log(`tokenPrice: ${tokenPrice}`);
         const res = await contract.methods.invest().send({
           from: account,
-          value: web3.utils.toBN(tokenPrice).mul(web3.utils.toBN(amount)).toString(),
+          value: toBN(tokenPrice).mul(toBN(amount)).toString(),
         });
         if (res) {
           console.log(res);

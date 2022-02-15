@@ -1,16 +1,17 @@
 import React from 'react';
-import web3 from 'web3';
-import { Tab, Tabs, Link, StructuredListWrapper, StructuredListBody, StructuredListRow, StructuredListCell } from 'carbon-components-react';
 import { useWeb3React } from '@web3-react/core';
 
+import { Tab, Tabs, Link, StructuredListWrapper, StructuredListBody, StructuredListRow, StructuredListCell } from 'carbon-components-react';
 import Invest from '../modules/Invest';
 import Balance from '../modules/Balance';
+
+import { fromWei, fromUnixTimestamp, isEmpty } from '../utils/utils';
 
 function HomePage({ contract }) {
   const { account } = useWeb3React();
   console.log(contract);
 
-  const [ico, setIco] = React.useState(undefined);
+  const [ico, setIco] = React.useState({});
 
   React.useEffect(() => {
     if (contract) {
@@ -30,14 +31,14 @@ function HomePage({ contract }) {
     // const admin = await contract.methods.admin().call();
     // console.log(`admin: ${admin}`);
     setIco({
-      tokenPrice: web3.utils.fromWei(tokenPrice),
-      minInvestment: web3.utils.fromWei(minInvestment),
-      maxInvestment: web3.utils.fromWei(maxInvestment),
+      tokenPrice: fromWei(tokenPrice),
+      minInvestment: fromWei(minInvestment),
+      maxInvestment: fromWei(maxInvestment),
       totalSupply,
-      raisedAmount: web3.utils.fromWei(raisedAmount),
-      saleStart: new Date(saleStart * 1000),
-      saleEnd: new Date(saleEnd * 1000),
-      tokenTradeStart: new Date(tokenTradeStart * 1000),
+      raisedAmount: fromWei(raisedAmount),
+      saleStart: fromUnixTimestamp(saleStart),
+      saleEnd: fromUnixTimestamp(saleEnd),
+      tokenTradeStart: fromUnixTimestamp(tokenTradeStart),
     })
   }
 
@@ -63,7 +64,7 @@ function HomePage({ contract }) {
       </div>
       <div className="bx--row">
         <div className="bx--col-lg-6">
-          {!!ico && Object.keys(ico).length > 0 && (
+          {!isEmpty(ico) && (
             <div>
               <StructuredListWrapper>
                 <StructuredListBody>
